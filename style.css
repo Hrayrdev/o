@@ -42,7 +42,11 @@ body {
     padding: 50px;
 
 }
-
+.avatar {
+    height: 60px;
+    width: 60px;
+    border-radius: 100%;
+}
 .user-data-card {
     height: 470px;
     width: 100%;

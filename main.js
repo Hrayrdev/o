@@ -26,13 +26,13 @@ export function createProjectsCard() {
         let userName = document.createElement('div')
         userName.className = 'user-name'
         let img = document.createElement('img')
-        img.src = './image/Ellipse%201.svg'
+        img.className = 'avatar'
+        img.src = dataRequest[i].owner.avatar_url
         let user = document.createElement('a')
         user.textContent = dataRequest[i].owner.login
         user.href = `https://github.com/${dataRequest[i].owner.login}`
         user.target = '_blank'
         user.className = 'user'
-
         userName.appendChild(img)
         userName.appendChild(user)
 
@@ -120,7 +120,6 @@ export function paginationReverseLeaf() {
 
 function listPaginator() {
     let indexPage = document.querySelector('.index-page')
-    console.log(indexPage.textContent)
 
     if (Number(indexPage.textContent) === 1) {
 
@@ -138,7 +137,6 @@ function listPaginator() {
     if (Number(indexPage.textContent) === 5) {
         i = 24
     }
-    console.log(i)
 }
 
 export function renderShowPagination() {

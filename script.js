@@ -45,9 +45,6 @@ search.addEventListener('submit', event => {
 // searchButton.addEventListener('click', getProjects)
 
 document.addEventListener('click', event => {
-    console.log(event.target.className)
-
-
     if (event.target.className === 'pagination__right') {
         paginationLeaf()
     }
