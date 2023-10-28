@@ -5,7 +5,6 @@ let userDataCard = document.querySelector('.user-data-card')
 let i = 0
 
 export function createProjectsCard() {
-    console.log(dataRequest)
     userDataCard.innerHTML = ''
     listPaginator()
     let k = i + 6
@@ -31,7 +30,7 @@ export function createProjectsCard() {
         user.textContent = dataRequest[i].owner.login
         user.href = `https://github.com/${dataRequest[i].owner.login}`
         user.target = '_blank'
-        user.className = 'user'
+        user.className =  'user'
         userName.appendChild(img)
         userName.appendChild(user)
 

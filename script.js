@@ -1,14 +1,20 @@
 import {createProjectsCard,} from "./main.js";
 import {renderShowPagination,paginationReverseLeaf,paginationLeaf} from "./pag.js"
 let searchInput = document.querySelector('.search__input')
-let searchButton = document.querySelector('.search__button')
 let search = document.querySelector('.search')
+let localStorageList = JSON.parse(localStorage.getItem('list'))
 
-
-// let canOrNo = true
 
 
 export let dataRequest = []
+if (localStorageList) {
+    dataRequest = localStorageList
+    // console.log(dataRequest)
+    renderShowPagination()
+    createProjectsCard()
+
+
+}
 
 function getProjects(callback) {
     dataRequest.splice(0, 30)
@@ -21,6 +27,8 @@ function getProjects(callback) {
                 for (let i = 0; i < 30; i++) {
                     dataRequest.push(data.items[i])
                 }
+            localStorage.setItem('list', JSON.stringify(dataRequest))
+
             renderShowPagination()
 
                 callback()
@@ -28,6 +36,7 @@ function getProjects(callback) {
                 searchInput.value = ''
             }
         )
+
 }
 
 
