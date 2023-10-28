@@ -1,5 +1,5 @@
-import {createProjectsCard, paginationLeaf, paginationReverseLeaf, renderShowPagination} from "./main.js";
-
+import {createProjectsCard,} from "./main.js";
+import {renderShowPagination,paginationReverseLeaf,paginationLeaf} from "./pag.js"
 let searchInput = document.querySelector('.search__input')
 let searchButton = document.querySelector('.search__button')
 let search = document.querySelector('.search')
