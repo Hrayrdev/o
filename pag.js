@@ -1,7 +1,7 @@
 import {createProjectsCard} from "./main.js";
 
 let paginationMain = document.querySelector('.pagination-main')
-
+let localStoragePage = JSON.parse( localStorage.getItem('page'))
 
 export function renderShowPagination() {
     paginationMain.innerHTML = ''
@@ -14,12 +14,24 @@ export function renderShowPagination() {
     paginationLeftDiv.appendChild(paginationLeft)
     let indexPreviousPage = document.createElement('div')
     indexPreviousPage.className = 'index-previous-page'
+
     let indexPage = document.createElement('div')
     indexPage.className = 'index-page'
-    indexPage.textContent = 1
+    if (localStoragePage){
+        indexPage.textContent = localStoragePage
+    } else {
+        indexPage.textContent = 1
+    }
+    if (localStoragePage > 1) {
+        indexPreviousPage.textContent = Number(indexPage.textContent ) - 1
+    }
     let indexNextPage = document.createElement('div')
     indexNextPage.className = 'index-next-page'
-    indexNextPage.textContent = 2
+    if (localStoragePage < 5){
+        indexNextPage.textContent = Number(indexPage.textContent ) + 1
+    }
+
+
     let paginationRightDiv = document.createElement('div')
     let paginationRight = document.createElement('img')
     paginationRight.src = './image/стрелочка-вправо.png'
@@ -52,6 +64,7 @@ export function paginationReverseLeaf() {
         indexPage.textContent = 1
         indexPreviousPage.textContent = undefined
     }
+    localStorage.setItem('page', JSON.stringify(indexPage.textContent))
     createProjectsCard()
 }
 export function paginationLeaf() {
@@ -70,6 +83,7 @@ export function paginationLeaf() {
         indexPage.textContent = 5
         indexNextPage.textContent = undefined
     }
+    localStorage.setItem('page', JSON.stringify(indexPage.textContent))
     createProjectsCard()
 }
 

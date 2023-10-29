@@ -57,6 +57,7 @@ export function createProjectsCard() {
         let profileCommentButton = document.createElement('button')
         profileCommentButton.className = 'profile-comment__button'
         let imgCommentButton = document.createElement('img')
+        imgCommentButton.className = "edit"
         imgCommentButton.src = './image/карандаш.png'
         profileCommentButton.appendChild(imgCommentButton)
 

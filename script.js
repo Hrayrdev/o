@@ -1,10 +1,11 @@
 import {createProjectsCard,} from "./main.js";
-import {renderShowPagination,paginationReverseLeaf,paginationLeaf} from "./pag.js"
+import {renderShowPagination, paginationReverseLeaf, paginationLeaf} from "./pag.js"
+import {renderBloock,changeComment} from "./block.js";
+
 let searchInput = document.querySelector('.search__input')
 let search = document.querySelector('.search')
 let localStorageList = JSON.parse(localStorage.getItem('list'))
-
-
+let block = document.querySelector('.block')
 
 export let dataRequest = []
 if (localStorageList) {
@@ -27,9 +28,9 @@ function getProjects(callback) {
                 for (let i = 0; i < 30; i++) {
                     dataRequest.push(data.items[i])
                 }
-            localStorage.setItem('list', JSON.stringify(dataRequest))
+                localStorage.setItem('list', JSON.stringify(dataRequest))
 
-            renderShowPagination()
+                renderShowPagination()
 
                 callback()
 
@@ -43,22 +44,28 @@ function getProjects(callback) {
 search.addEventListener('submit', event => {
     event.preventDefault()
     if (searchInput.value !== '') {
-
         getProjects(function () {
             createProjectsCard()
         })
-
-
     }
 })
-// searchButton.addEventListener('click', getProjects)
 
 document.addEventListener('click', event => {
-    if (event.target.className === 'pagination__right') {
-        paginationLeaf()
-    }
-    if (event.target.className === 'pagination__left') {
-        paginationReverseLeaf()
-    }
+        if (event.target.className === 'pagination__right') {
+            paginationLeaf()
+        }
+        if (event.target.className === 'pagination__left') {
+            paginationReverseLeaf()
+        }
 
-})
+        if (event.target.className === 'edit') {
+            renderBloock(event.target.parentNode.parentNode.parentNode, event.target.parentNode.parentNode.parentNode.lastChild.firstChild)
+            console.log(event.target.parentNode.parentNode.parentNode.lastChild.firstChild)
+        }
+
+        if (event.target.className === 'save') {
+            changeComment()
+        }
+
+    }
+)

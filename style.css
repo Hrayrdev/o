@@ -8,10 +8,9 @@ body {
     height: 100vh;
     display: flex;
     align-items: center;
-    padding-top: 40px;
     flex-direction: column;
     background-color: #DDD;
-
+    position: relative;
 }
 
 .search {
@@ -48,7 +47,7 @@ body {
     border-radius: 100%;
 }
 .user-data-card {
-    height: 470px;
+    height: auto;
     width: 100%;
 
     display: flex;
@@ -136,10 +135,13 @@ body {
 
 .action-card {
     display: flex;
+    width: auto;
 }
 
+.pagination-main {
+    margin-left: 31%;
+}
 .pagination {
-    margin-left: 550px;
     display: flex;
 }
 
@@ -169,4 +171,39 @@ body {
     border: 1px solid #A2A3A4;
     justify-content: center;
     align-items: center;
+}
+
+.block {
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    display: none;
+    backdrop-filter: blur(10px);
+    align-items: center;
+    justify-content: center;
+}
+
+.block__div {
+
+    border: 1px solid;
+    width: 30%;
+    height: 50%;
+    padding: 20px;
+}
+
+.user-popularity-block {
+    justify-content: flex-start;
+    flex-direction: column;
+}
+.profile-comment__input-block{
+    height: 100px;
+    width: 100%;
+    margin-bottom: 10px;
+
+}
+.buttons {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
 }
